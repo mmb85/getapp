@@ -1,13 +1,16 @@
 # frozen_string_literal: true
 
 module ServiceImporter
+  require 'parser/capterra'
+  require 'parser/software_advice'
+
   AVAILABLE_SERVICES = %w[capterra softwareadvice].freeze
 
   def self.capterra
-    puts 'CAPTERRA SERVICE DETECTED'
+    Parser::Capterra.execute
   end
 
   def self.softwareadvice
-    puts 'SOFTWARE ADVICE SERVICE DETECTED'
+    Parser::SoftwareAdvice.execute
   end
 end

@@ -2,9 +2,17 @@
 # frozen_string_literal: true
 
 require 'bundler/setup'
+require 'service_importer'
 
 if ARGV.count != 2
   raise ArgumentError, "Wrong number of argument provided, please use this format: \n" \
                        "getapp_import <service_name> <file path> \n" \
                        'getapp_import capterra feed-products/capterra.yaml'
 end
+
+unless ServiceImporter::AVAILABLE_SERVICES.include? ARGV[0]
+  raise ArgumentError, "Selected service #{ARGV[0]} is not available yet, please use " \
+  "#{ServiceImporter::AVAILABLE_SERVICES} services"
+end
+
+ServiceImporter.send(ARGV[0])

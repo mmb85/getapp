@@ -5,9 +5,7 @@ module Parser
     private
 
     def import_file(name, categories, twitter)
-      row = "importing: Name: #{name};  Categories: #{categories}; Twitter: @#{twitter}\n"
-      puts row
-      row
+      "importing: Name: #{name}; Categories: #{categories}#{add_twitter(twitter)}"
     end
 
     def check_file_extension(file_ext, file)
@@ -17,6 +15,18 @@ module Parser
       end
 
       true
+    end
+
+    def add_twitter(twitter)
+      return unless twitter
+
+      twitter.slice!(0) if twitter[0] == '@'
+      "; Twitter: @#{twitter}"
+    end
+
+    def print_and_return(parsed_content)
+      puts parsed_content
+      parsed_content
     end
   end
 end

@@ -18,6 +18,8 @@ module Parser
       file.each do |row|
         parsed_content << import_file(row['name'], parse_tags(row), row['twitter'])
       end
+
+      print_and_return(parsed_content)
     end
 
     private

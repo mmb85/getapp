@@ -10,4 +10,8 @@ RSpec.configure do |config|
   config.expect_with :rspec do |c|
     c.syntax = :expect
   end
+
+  RSpec.configure do |c|
+    c.before { allow($stdout).to receive(:puts) }
+  end
 end

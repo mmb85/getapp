@@ -13,11 +13,15 @@ RSpec.describe Parser::Capterra do
   end
 
   context 'When the file is correctly processed' do
-    it 'should include the expected content' do
+    it 'should include the expected lines' do
       expect(@result.count).to eq(3)
-      expect(@result[0]).to eq({ 'name' => 'GitHub',
-                                 'tags' => 'Bugs & Issue Tracking,Development Tools',
-                                 'twitter' => 'github' })
+    end
+
+    it 'should include all the expected content' do
+      expect(@result[0]).to eq('importing: ' \
+                               'Name: GitHub; ' \
+                               'Categories: Bugs & Issue Tracking, Development Tools; ' \
+                               'Twitter: @github')
     end
 
     # it 'should not exclude other valid data' do

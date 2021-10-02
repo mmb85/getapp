@@ -12,7 +12,7 @@ end
 
 unless ServiceImporter::AVAILABLE_SERVICES.include? ARGV[0]
   raise ArgumentError, "Selected service #{ARGV[0]} is not available yet, please use " \
-  "#{ServiceImporter::AVAILABLE_SERVICES} services"
+  "#{ServiceImporter::AVAILABLE_SERVICES} availables services"
 end
 
-ServiceImporter.send(ARGV[0])
+ServiceImporter.send(ARGV[0], ARGV[1])

@@ -1,0 +1,10 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+require 'bundler/setup'
+
+if ARGV.count != 2
+  raise ArgumentError, "Wrong number of argument provided, please use this format: \n" \
+                       "getapp_import <service_name> <file path> \n" \
+                       'getapp_import capterra feed-products/capterra.yaml'
+end

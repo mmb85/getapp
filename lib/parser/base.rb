@@ -2,17 +2,21 @@
 
 module Parser
   class Base
-    attr_reader :file
+    private
 
-    require 'yaml'
-
-    def initialize(file)
-      @file = YAML.load_file(file)
+    def import_file(name, categories, twitter)
+      row = "importing: Name: #{name};  Categories: #{categories}; Twitter: @#{twitter}\n"
+      puts row
+      row
     end
 
-    def execute
-      puts "PARSING DATA for #{file}"
-      puts file.inspect
+    def check_file_extension(file_ext, file)
+      unless file_ext.include? File.extname(file)
+        raise StandardError,
+              "Selected service #{ARGV[0]} require some #{file_ext} file"
+      end
+
+      true
     end
   end
 end

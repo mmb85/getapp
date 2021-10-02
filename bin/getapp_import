@@ -4,15 +4,29 @@
 require 'bundler/setup'
 require 'service_importer'
 
-if ARGV.count != 2
-  raise ArgumentError, "Wrong number of argument provided, please use this format: \n" \
-                       "getapp_import <service_name> <file path> \n" \
-                       'getapp_import capterra feed-products/capterra.yaml'
+def argument_checker
+  if ARGV.count != 2
+    raise ArgumentError, "Wrong number of argument provided, please use this format: \n" \
+                         "getapp_import <service_name> <file path> \n" \
+                         'getapp_import capterra feed-products/capterra.yaml'
+  end
+
+  true
 end
 
-unless ServiceImporter::AVAILABLE_SERVICES.include? ARGV[0]
-  raise ArgumentError, "Selected service #{ARGV[0]} is not available yet, please use " \
-  "#{ServiceImporter::AVAILABLE_SERVICES} availables services"
+def service_availability
+  unless ServiceImporter::AVAILABLE_SERVICES.include? ARGV[0]
+    raise ArgumentError, "Selected service #{ARGV[0]} is not available yet, please use " \
+    "#{ServiceImporter::AVAILABLE_SERVICES} availables services"
+  end
+
+  true
 end
 
-ServiceImporter.send(ARGV[0], ARGV[1])
+def service_runner
+  ServiceImporter.send(ARGV[0], ARGV[1])
+end
+
+argument_checker
+service_availability
+service_runner

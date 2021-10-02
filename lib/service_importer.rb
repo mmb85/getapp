@@ -8,10 +8,10 @@ module ServiceImporter
   AVAILABLE_SERVICES = %w[capterra softwareadvice].freeze
 
   def self.capterra(file)
-    Parser::Capterra.new(file).execute
+    Parser::Capterra.new(file).perform
   end
 
   def self.softwareadvice(file)
-    Parser::SoftwareAdvice.new(file).execute
+    Parser::SoftwareAdvice.new(file).perform
   end
 end

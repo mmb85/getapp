@@ -6,7 +6,7 @@ module Parser
 
     require 'yaml'
 
-    FILE_EXT = %w[.yml .yaml].freeze
+    FILE_EXT = %w[yml yaml].freeze
 
     def initialize(filename)
       check_file_extension(FILE_EXT, filename)
@@ -16,7 +16,7 @@ module Parser
     def perform
       parsed_content = []
       file.each do |row|
-        parsed_content << import_file(row['name'], parse_tags(row), row['twitter'])
+        parsed_content << import_line(row['name'], parse_tags(row), row['twitter'])
       end
 
       print_and_return(parsed_content)

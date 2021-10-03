@@ -3,7 +3,6 @@
 require 'spec_helper'
 require 'yaml'
 require 'require_all'
-require 'pry'
 
 require_all 'lib'
 
@@ -23,9 +22,5 @@ RSpec.describe Parser::Capterra do
                                'Categories: Bugs & Issue Tracking, Development Tools; ' \
                                'Twitter: @github')
     end
-
-    # it 'should not exclude other valid data' do
-    #   expect(@result.to_s).not_to include('22.22.22.22')
-    # end
   end
 end
